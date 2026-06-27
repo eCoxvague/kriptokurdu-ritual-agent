@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 # run.sh - Ritual testnet (chain 1979) üzerinde tekrarlayan sovereign agent yönetimi.
 # Komutlar: deploy (varsayılan), status, topup, restart, stop. Keyless Ritual LLM,
 # şifreli keystore (ilk çalıştırmada kurulur), foundry + uv otomatik kurulur.
@@ -171,7 +171,7 @@ import_keystore() {
   step "Set up your wallet keystore"
   local name="${KEYSTORE_ACCOUNT:-}" key p1 p2 i
   if [ -z "$name" ]; then
-    printf '  %sname for your keystore [ritual-deployer]:%s ' "$ACCENT" "$RESET" >&2
+    printf '  %skeystore için bir ad belirleyin [ritual-deployer]:%s ' "$ACCENT" "$RESET" >&2
     IFS= read -r name < /dev/tty || name=""; [ -z "$name" ] && name="ritual-deployer"
   fi
   if [ -f "$KEYSTORE_DIR/$name" ]; then          # name already exists -> adopt it, don't re-import
@@ -181,12 +181,12 @@ import_keystore() {
     set_env_var WALLET_ADDRESS "$WALLET_ADDRESS"
     ok "using existing keystore '$name' for $WALLET_ADDRESS"; return
   fi
-  read_masked "  paste your wallet private key: "; key="$REPLY_SECRET"
+  read_masked "  cüzdanınızın private key'ini yapıştırın: "; key="$REPLY_SECRET"
   [ -n "$key" ] || fail "no private key entered"
   case "$key" in 0x*) ;; *) key="0x$key" ;; esac
   for i in 1 2 3; do
-    read_masked "  set a keystore password: "; p1="$REPLY_SECRET"
-    read_masked "  confirm password: ";        p2="$REPLY_SECRET"
+    read_masked "  keystore için bir şifre belirleyin: "; p1="$REPLY_SECRET"
+    read_masked "  şifreyi onaylayın: ";        p2="$REPLY_SECRET"
     [ -n "$p1" ] && [ "$p1" = "$p2" ] && break
     { [ -z "$p1" ] && warn "empty password ($i/3)"; } || warn "passwords do not match ($i/3)"
     p1=""
@@ -217,7 +217,7 @@ unlock() {
   [ -n "$KS_PASSWORD" ] && return 0
   local i pw
   for i in 1 2 3; do
-    read_masked "  keystore password: "; pw="$REPLY_SECRET"
+    read_masked "  keystore şifresi: "; pw="$REPLY_SECRET"
     if cast wallet address --account "$KEYSTORE_ACCOUNT" --password "$pw" >/dev/null 2>&1; then
       KS_PASSWORD="$pw"; return 0
     fi
@@ -438,7 +438,7 @@ cmd_deploy() {
     warn "you already have an agent live:"
     kv "  salt" "$salt"
     kv "  agent" "$HARNESS"
-    printf '\n  %sDeploy another (new) agent? [y/N]%s ' "$ACCENT" "$RESET"
+    printf '\n  %sBaşka bir (yeni) agent deploy edilsin mi? [y/N]%s ' "$ACCENT" "$RESET"
     read -r reply < /dev/tty 2>/dev/null || reply=""
     case "$reply" in
       y|Y|yes|YES) ;;
@@ -562,3 +562,4 @@ case "$CMD" in
   stop)           cmd_stop "${1:-}" ;;
   *)              usage; fail "unknown command: $CMD" ;;
 esac
+

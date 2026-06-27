@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     run.ps1 - Ritual testnet (chain 1979) üzerinde tekrarlayan sovereign agent yönetimi.
     Komutlar: deploy (varsayılan), status, topup, restart, stop. run.sh'nin Windows
@@ -172,7 +172,7 @@ function Import-Keystore {
     Banner
     Step "Set up your wallet keystore"
     $name = $env:KEYSTORE_ACCOUNT
-    if (-not $name) { $name = Read-Host "  name for your keystore [ritual-deployer]"; if (-not $name) { $name = "ritual-deployer" } }
+    if (-not $name) { $name = Read-Host "  keystore için bir ad belirleyin [ritual-deployer]"; if (-not $name) { $name = "ritual-deployer" } }
     if (Test-Path (Join-Path "$HOME\.foundry\keystores" $name)) {   # name already exists -> adopt it
         $env:KEYSTORE_ACCOUNT = $name; Set-EnvVar "KEYSTORE_ACCOUNT" $name
         Unlock
@@ -181,13 +181,13 @@ function Import-Keystore {
         Set-EnvVar "WALLET_ADDRESS" $env:WALLET_ADDRESS
         Ok "using existing keystore '$name' for $env:WALLET_ADDRESS"; return
     }
-    $key = Read-Masked "  paste your wallet private key: "
+    $key = Read-Masked "  cüzdanınızın private key'ini yapıştırın: "
     if (-not $key) { Fail "no private key entered" }
     if ($key -notmatch '^0x') { $key = "0x$key" }
     $p1 = ''
     for ($i = 1; $i -le 3; $i++) {
-        $p1 = Read-Masked "  set a keystore password: "
-        $p2 = Read-Masked "  confirm password: "
+        $p1 = Read-Masked "  keystore için bir şifre belirleyin: "
+        $p2 = Read-Masked "  şifreyi onaylayın: "
         if ($p1 -and $p1 -eq $p2) { break }
         if (-not $p1) { Warn "empty password ($i/3)" } else { Warn "passwords do not match ($i/3)" }
         $p1 = ''
@@ -219,7 +219,7 @@ function Resolve-Signer {
 function Unlock {
     if ($script:KS_PASSWORD) { return }
     for ($i = 1; $i -le 3; $i++) {
-        $pw = Read-Masked "  keystore password: "
+        $pw = Read-Masked "  keystore şifresi: "
         & cast wallet address --account $env:KEYSTORE_ACCOUNT --password $pw 2>&1 | Out-Null
         if ($LASTEXITCODE -eq 0) { $script:KS_PASSWORD = $pw; return }
         Warn "wrong password ($i/3)"
@@ -415,7 +415,7 @@ function Invoke-Deploy {
         Warn "you already have an agent live:"
         Kv "  salt"  $salt
         Kv "  agent" $env:HARNESS
-        $reply = Read-Host "`n  Deploy another (new) agent? [y/N]"
+        $reply = Read-Host "`n  Başka bir (yeni) agent deploy edilsin mi? [y/N]"
         if ($reply -notmatch '^(y|Y|yes|YES)$') { Info "left it running - inspect with: pwsh run.ps1 status"; exit 0 }
         while (Test-Live $env:HARNESS) {
             $salt = Get-NextSalt $salt
@@ -539,4 +539,5 @@ switch ($CMD) {
     'stop'    { Invoke-Stop $ARG1 }
     default   { Show-Usage; Fail "unknown command: $CMD" }
 }
+
 
