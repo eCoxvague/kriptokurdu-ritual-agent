@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐺 Kriptokurdu — Ritual Sovereign Agent Deployer
+# 🐺 Kriptokurdu Ritual Sovereign Agent Deployer
 
 **Ritual testnet üzerinde tekrarlayan, kendi kendini finanse eden AI agent'ı tek komutla deploy et. API key gerekmez.**
 
@@ -19,10 +19,10 @@
 
 ### 🎯 Ne İşe Yarar?
 - 🤖 Otomatik olarak AI görevleri çalıştırır
-- 🔒 Güvenli ortamda (TEE) çalışır — verileriniz korunur
-- 💰 Kendi cüzdanından ödeme yapar — müdahale gerekmez
-- 🔑 API key gerekmez — Ritual'ın kendi LLM gateway'ini kullanır
-- ⏰ Zamanlanmış çalışır — siz uyurken bile
+- 🔒 Güvenli ortamda (TEE) çalışır verileriniz korunur
+- 💰 Kendi cüzdanından ödeme yapar müdahale gerekmez
+- 🔑 API key gerekmez Ritual'ın kendi LLM gateway'ini kullanır
+- ⏰ Zamanlanmış çalışır siz uyurken bile
 
 ---
 
@@ -50,28 +50,28 @@ MetaMask veya Rabby'de bir cüzdan oluşturun, ardından ücretsiz testnet RITUA
 ### 3. Private Key
 Cüzdanınızın private key'i (script çalışırken soracak).
 
-> ⚠️ **DİKKAT:** Testnet burner cüzdanı kullanın — gerçek para olan cüzdanınızı ASLA kullanmayın!
+> ⚠️ **DİKKAT:** Testnet burner cüzdanı kullanın gerçek para olan cüzdanınızı ASLA kullanmayın!
 
 ---
 
 <h2 align="center">🚀 Hızlı Başlangıç 🚀</h2>
 
-### Adım 1 — Kodu İndir
+### Adım 1 Kodu İndir
 
 ```bash
 git clone https://github.com/eCoxvague/ritual-agent-deployment.git
 cd ritual-agent-deployment
 ```
 
-### Adım 2 — Yapılandır
+### Adım 2 Yapılandır
 
 ```bash
 cp .env.example .env
 ```
 
-Varsayılan ayarlar çalışır durumda — düzenlemeniz zorunlu değil. `PROMPT` değişkeni agent'ınızın her uyanışta çalıştıracağı görevdir, istediğiniz gibi değiştirin.
+Varsayılan ayarlar çalışır durumda düzenlemeniz zorunlu değil. `PROMPT` değişkeni agent'ınızın her uyanışta çalıştıracağı görevdir, istediğiniz gibi değiştirin.
 
-### Adım 3 — Deploy Et
+### Adım 3 Deploy Et
 
 **Windows (PowerShell 7+):**
 
@@ -115,13 +115,13 @@ Her agent, deterministic bir adreste kendi kontratıdır (cüzdan adresi + salt)
 | `bash run.sh restart <adres>` | Durmuş bir agent'ı yeniden başlat. |
 | `bash run.sh stop <adres>` | Bir agent'ı durdur. |
 
-**İkinci agent mi istiyorsunuz?** `pwsh run.ps1` (veya `bash run.sh`) tekrar çalıştırın — mevcut agent'ı algılar ve yeni bir tane oluşturmak isteyip istemediğinizi sorar.
+**İkinci agent mi istiyorsunuz?** `pwsh run.ps1` (veya `bash run.sh`) tekrar çalıştırın mevcut agent'ı algılar ve yeni bir tane oluşturmak isteyip istemediğinizi sorar.
 
 ---
 
 <h2 align="center">⚙️ Yapılandırma ⚙️</h2>
 
-`.env` dosyası sırları içermez — yalnızca genel adresiniz ve çalıştırma ayarlarınız burada.
+`.env` dosyası sırları içermez yalnızca genel adresiniz ve çalıştırma ayarlarınız burada.
 
 | Değişken | Açıklama |
 | --- | --- |
@@ -131,10 +131,10 @@ Her agent, deterministic bir adreste kendi kontratıdır (cüzdan adresi + salt)
 | `CLI_TYPE` | Harness tipi. `6` = ZeroClaw. |
 | `MODEL` | Ritual gateway üzerinden yönlendirilen model (harici key gerekmez). Varsayılan: `zai-org/GLM-4.7-FP8`. |
 | `PROMPT` | Agent'ın her uyanışta çalıştırdığı görev. |
-| `SALT` | Benzersiz bir string — agent adresini belirler. Her agent için farklı olmalı. |
+| `SALT` | Benzersiz bir string agent adresini belirler. Her agent için farklı olmalı. |
 | `LOCK_BLOCKS` | İsteğe bağlı. Depozitonun kilitli kalacağı blok sayısı. Varsayılan: `100000`. |
-| `KEYSTORE_ACCOUNT` | İlk çalıştırmada otomatik yazılır — keystore adınız. |
-| `WALLET_ADDRESS` | İlk çalıştırmada otomatik yazılır — genel adresiniz. |
+| `KEYSTORE_ACCOUNT` | İlk çalıştırmada otomatik yazılır keystore adınız. |
+| `WALLET_ADDRESS` | İlk çalıştırmada otomatik yazılır genel adresiniz. |
 
 > 🔐 Private key'iniz asla `.env`'e yazılmaz; şifreli olarak `~/.foundry/keystores` klasöründe saklanır. Yine de **testnet burner** cüzdan kullanın.
 
@@ -154,14 +154,14 @@ Her agent, deterministic bir adreste kendi kontratıdır (cüzdan adresi + salt)
 - ✅ `.env` dosyasına private key **yazılmaz**
 - ✅ Tüm işlemler sadece Ritual testnet üzerinde gerçekleşir
 - ✅ Harici sunuculara veri gönderilmez
-- ⚠️ Kilitlediğiniz depozito, agent'ın zamanlanmış çalışmaları için harcanır — anında geri alınamaz
-- ⚠️ Bu bir testnet yazılımıdır — audit edilmemiştir
+- ⚠️ Kilitlediğiniz depozito, agent'ın zamanlanmış çalışmaları için harcanır anında geri alınamaz
+- ⚠️ Bu bir testnet yazılımıdır audit edilmemiştir
 
 ---
 
 <h2 align="center">📜 Sorumluluk Reddi & Lisans 📜</h2>
 
-Bu araç, `~/.foundry/keystores` altında şifreli bir keystore'da saklanan bir anahtarla işlem imzalar — testnet burner cüzdan kullanın, asla gerçek fonlu bir cüzdan kullanmayın. Kilitlediğiniz depozito, agent'ın zamanlanmış çalışmalarını finanse eder ve zamanla harcanır — kolayca geri alınamaz. Bu bir testnet yazılımıdır, olduğu gibi sunulur, garanti verilmez ve denetlenmemiştir. Riski size aittir.
+Bu araç, `~/.foundry/keystores` altında şifreli bir keystore'da saklanan bir anahtarla işlem imzalar testnet burner cüzdan kullanın, asla gerçek fonlu bir cüzdan kullanmayın. Kilitlediğiniz depozito, agent'ın zamanlanmış çalışmalarını finanse eder ve zamanla harcanır kolayca geri alınamaz. Bu bir testnet yazılımıdır, olduğu gibi sunulur, garanti verilmez ve denetlenmemiştir. Riski size aittir.
 
 **MIT Lisansı** altında yayınlanmıştır.
 

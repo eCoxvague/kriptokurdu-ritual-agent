@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     run.ps1 - Ritual testnet (chain 1979) üzerinde tekrarlayan sovereign agent yönetimi.
     Komutlar: deploy (varsayılan), status, topup, restart, stop. run.sh'nin Windows
@@ -34,7 +34,7 @@ function Gradient([string]$t) {
     [void]$sb.Append($RESET); return $sb.ToString()
 }
 
-$script:BannerShown = $false
+$script:BannerShown = $false 
 function Banner {
     if ($script:BannerShown) { return }; $script:BannerShown = $true
     Write-Host ""; Write-Host "  $(Gradient 'KRIPTOKURDU AGENT')"
