@@ -164,5 +164,3 @@ Her agent, deterministic bir adreste kendi kontratıdır (cüzdan adresi + salt)
 Bu araç, `~/.foundry/keystores` altında şifreli bir keystore'da saklanan bir anahtarla işlem imzalar testnet burner cüzdan kullanın, asla gerçek fonlu bir cüzdan kullanmayın. Kilitlediğiniz depozito, agent'ın zamanlanmış çalışmalarını finanse eder ve zamanla harcanır kolayca geri alınamaz. Bu bir testnet yazılımıdır, olduğu gibi sunulur, garanti verilmez ve denetlenmemiştir. Riski size aittir.
 
 **MIT Lisansı** altında yayınlanmıştır.
-
-Geliştirici: [eCoxvague](https://github.com/eCoxvague)
