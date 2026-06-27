@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 # run.sh - Ritual testnet (chain 1979) üzerinde tekrarlayan sovereign agent yönetimi.
 # Komutlar: deploy (varsayılan), status, topup, restart, stop. Keyless Ritual LLM,
 # şifreli keystore (ilk çalıştırmada kurulur), foundry + uv otomatik kurulur.
-# Özelleştiren: Kriptokurdu | Orijinal: Zun
+# Geliştirici: Kriptokurdu
 
 set -euo pipefail
 
@@ -42,8 +42,7 @@ banner() {
   [ "$BANNER_SHOWN" = 1 ] && return 0; BANNER_SHOWN=1
   printf '\n  '; gradient "KRIPTOKURDU AGENT"; printf '\n'
   printf '  %stekrarlayan keyless agent - Ritual testnet (1979)%s\n' "$DIM" "$RESET"
-  printf '  %sby Kriptokurdu  %shttps://github.com/eCoxvague%s\n' "$MUTED" "$ACCENT" "$RESET"
-  printf '  %sorijinal: Zun  %shttps://x.com/Zun2025%s\n' "$MUTED" "$ACCENT" "$RESET"; hr
+  printf '  %sby Kriptokurdu  %shttps://github.com/eCoxvague%s\n' "$MUTED" "$ACCENT" "$RESET"; hr
 }
 step() { printf '\n  %s>%s %s%s%s\n' "$ACCENT" "$RESET" "$BOLD" "$1" "$RESET"; }
 info() { printf '    %s%s%s\n' "$MUTED" "$1" "$RESET"; }

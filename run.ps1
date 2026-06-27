@@ -1,9 +1,9 @@
-﻿<#
+<#
 .SYNOPSIS
     run.ps1 - Ritual testnet (chain 1979) üzerinde tekrarlayan sovereign agent yönetimi.
     Komutlar: deploy (varsayılan), status, topup, restart, stop. run.sh'nin Windows
     karşılığı (pwsh 7+). Foundry + uv otomatik kurulur.
-    Özelleştiren: Kriptokurdu | Orijinal: Zun
+    Geliştirici: Kriptokurdu
 #>
 #Requires -Version 7.0
 $ErrorActionPreference = 'Stop'
@@ -39,8 +39,7 @@ function Banner {
     if ($script:BannerShown) { return }; $script:BannerShown = $true
     Write-Host ""; Write-Host "  $(Gradient 'KRIPTOKURDU AGENT')"
     Write-Host "  ${DIM}tekrarlayan keyless agent - Ritual testnet (1979)$RESET"
-    Write-Host "  ${MUTED}by Kriptokurdu  ${ACCENT}https://github.com/eCoxvague$RESET"
-    Write-Host "  ${MUTED}orijinal: Zun  ${ACCENT}https://x.com/Zun2025$RESET"; Hr
+    Write-Host "  ${MUTED}by Kriptokurdu  ${ACCENT}https://github.com/eCoxvague$RESET"; Hr
 }
 function Step([string]$m) { Write-Host ""; Write-Host "  $ACCENT>$RESET $BOLD$m$RESET" }
 function Info([string]$m) { Write-Host "    $MUTED$m$RESET" }

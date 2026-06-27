@@ -165,5 +165,4 @@ Bu araç, `~/.foundry/keystores` altında şifreli bir keystore'da saklanan bir 
 
 **MIT Lisansı** altında yayınlanmıştır.
 
-Orijinal proje: [Zun](https://x.com/Zun2025) tarafından geliştirilmiştir.
-Türkçeleştirme ve özelleştirme: [eCoxvague](https://github.com/eCoxvague)
+Geliştirici: [eCoxvague](https://github.com/eCoxvague)
